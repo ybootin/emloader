@@ -1,0 +1,21 @@
+{
+  "name": "emloader",
+  "description": "Provide a simple js loader for emscripten mame js compiled emulator",
+  "version": "0.0.1",
+  "main": "dist/emloader.js",
+  "files": [
+    "dist/",
+    "src/",
+    "samples/"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "1.8.0"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "npm run buildts && npm run buildcss",
+    "buildts": "node_modules/typescript/bin/tsc -d  --target es6 --sourceMap --outFile dist/emloader.js src/emloader/Emloader.ts",
+    "buildcss": "cp src/emloader/plugins/plugins.css dist/emloader-plugins.css"
+  }
+}
