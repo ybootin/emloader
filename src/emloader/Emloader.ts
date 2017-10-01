@@ -24,10 +24,10 @@ namespace emloader {
       return file
     }
 
-    let emloader = new Emloader(container, emModule)
+    let loader = new Emloader(container, emModule)
 
-    return helper.HTMLHelper.loadScript(emloader.scope.document, url).then((): Emloader => {
-      return emloader
+    return helper.HTMLHelper.loadScript(loader.scope.document, url).then((): Emloader => {
+      return loader
     })
   }
 
