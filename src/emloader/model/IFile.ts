@@ -1,8 +1,8 @@
-namespace emloader {
-  export interface IFile {
+//namespace emloader {
+  export default interface IFile {
     name: string,     // filename
     data: Uint8Array  // content
   }
-}
+//}
 
 

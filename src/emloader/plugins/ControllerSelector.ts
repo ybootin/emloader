@@ -1,9 +1,11 @@
-/// <reference path="../model/IControls.ts" />
-/// <reference path="../helper/HTMLHelper.ts" />
+import {IJoystick} from '../model/IControls'
+import Controllers from '../controllers/Controllers'
+import HTMLHelper from '../helper/HTMLHelper'
+import {IControlKeyHandler, IControlMapping} from '../model/IControls'
 
-namespace emloader.plugins {
+//namespace emloader.plugins {
 
-  export class ControllerSelector {
+  export default class ControllerSelector {
     private mainContainer: HTMLElement
     private joystick: IJoystick
 
@@ -80,7 +82,7 @@ namespace emloader.plugins {
         addOptionClick()
       }
 
-      helper.HTMLHelper.addClass(<HTMLElement>this.mainContainer.childNodes[0], this.baseClass + '-expanded')
+      HTMLHelper.addClass(<HTMLElement>this.mainContainer.childNodes[0], this.baseClass + '-expanded')
     }
 
     public close() {
@@ -104,7 +106,7 @@ namespace emloader.plugins {
       option.innerHTML = joystick && joystick.getGamepad() ? String(joystick.getGamepad().index + 1) : ''
 
       if (main && this.controllers.getJoysticks().length > 0) {
-        helper.HTMLHelper.addClass(option, this.baseClass + '-expandable')
+        HTMLHelper.addClass(option, this.baseClass + '-expandable')
         option.addEventListener('click', (evt: Event) => {
           this.isOpened() ? this.close() : this.open()
         })
@@ -113,4 +115,4 @@ namespace emloader.plugins {
       return option
     }
   }
-}
+//}

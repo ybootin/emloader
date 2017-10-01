@@ -1,7 +1,8 @@
-/// <reference path="../model/IControls.ts" />
+import {IControlKeyHandler, IControlMapping, IJoystick} from '../model/IControls'
+import EventEmiter from '../event/EventEmiter'
 
-namespace emloader {
-  export class Joystick extends emloader.event.EventEmiter implements IJoystick {
+//namespace emloader {
+  export default class Joystick extends EventEmiter implements IJoystick {
     static axes = [['left', 'right'], ['up', 'down']]
 
     // maps IControl keys as string like this control[button]
@@ -126,4 +127,4 @@ namespace emloader {
       }
     }
   }
-}
+//}

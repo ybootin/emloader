@@ -1,9 +1,11 @@
-/// <reference path="IModule.ts" />
 /// <reference path="FS.d.ts" />
-/// <reference path="../KeyHandler.ts" />
 
-namespace emloader {
-  export interface IEmloader {
+import IModule from './IEmscriptenModule'
+import IFile from './IFile'
+import KeyHandler from '../KeyHandler'
+
+//namespace emloader {
+  export default interface IEmloader {
     keyHandler: KeyHandler
     scope: Window
     canvas: HTMLCanvasElement
@@ -16,4 +18,4 @@ namespace emloader {
     loadFile(url: string, name: string, path: string, handler?: {(evt: ProgressEvent): void}): Promise<void>
     loadFiles(files: {[filename: string]: string}, path: string, handler?: {(evt: ProgressEvent): void}): Promise<void>
   }
-}
+//}

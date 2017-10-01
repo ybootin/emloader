@@ -1,5 +1,5 @@
-namespace emloader {
-  export interface IModule {
+//namespace emloader {
+  export default interface IEmscriptenModule {
     arguments: Array<string>
     screenIsReadOnly: boolean
     print: Function
@@ -7,13 +7,13 @@ namespace emloader {
     canvas: HTMLCanvasElement
     noInitialRun: boolean
     preInit?: Function
-    callMain?: {(arguments: Array<string>): void}
+    callMain?: {(args: Array<string>): void}
     addOnExit?: Function
     requestAnimationFrame?: any
     locateFile?: {(file: string): string}
   }
 
-  export interface IModule_SDL_SendKeyboardKey {
+  export interface IEmscriptenModule_SDL_SendKeyboardKey {
     (state: number, scancode: number): void
   }
-}
+//}

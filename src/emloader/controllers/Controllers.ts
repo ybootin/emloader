@@ -1,10 +1,11 @@
-/// <reference path="../model/IControls.ts" />
-/// <reference path="Joystick.ts" />
-/// <reference path="Keyboard.ts" />
+import {IControlKeyHandler, IControlMapping, IJoystick} from '../model/IControls'
+import EventEmiter from '../event/EventEmiter'
+import Keyboard from './Keyboard'
+import Joystick from './Joystick'
 
-namespace emloader {
+//namespace emloader {
 
-  export class Controllers extends emloader.event.EventEmiter {
+  export default class Controllers extends EventEmiter {
 
     static JOYSTICKCONNECTED: string = 'joystickconnected'
     static JOYSTICKDISCONNECTED: string = 'joystickdisconnected'
@@ -123,4 +124,4 @@ namespace emloader {
       this.keyboard.unbind()
     }
   }
-}
+//}

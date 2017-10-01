@@ -1,12 +1,14 @@
-/// <reference path="IModule.ts" />
+import IModule from './IEmscriptenModule'
 
-interface Window {
-  Module: emloader.IModule
-  mozRequestAnimationFrame: any
-  webkitRequestAnimationFrame: any
-  mozCancelRequestAnimationFrame: any
-  webkitCancelRequestAnimationFrame: any
-  cancelRequestAnimationFrame: any
+declare global {
+  interface Window {
+    Module: IModule
+    mozRequestAnimationFrame: any
+    webkitRequestAnimationFrame: number
+    mozCancelRequestAnimationFrame: any
+    webkitCancelRequestAnimationFrame: any
+    cancelRequestAnimationFrame: any
+  }
 }
 
 if (!window.requestAnimationFrame) {

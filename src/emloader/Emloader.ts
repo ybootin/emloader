@@ -1,19 +1,21 @@
 /// <reference path="model/FS.d.ts" />
 /// <reference path="model/Window.ts" />
-/// <reference path="model/IFile.ts" />
-/// <reference path="model/IModule.ts" />
-/// <reference path="model/IEmloader.ts" />
-/// <reference path="event/EventEmiter.ts" />
-/// <reference path="helper/HTMLHelper.ts" />
-/// <reference path="helper/FileLoader.ts" />
-/// <reference path="KeyHandler.ts" />
 /// <reference path="plugins/VirtualController.ts" />
+
+import IEmloader from './model/IEmloader'
+import IModule from './model/IEmscriptenModule'
+import IFile from './model/IFile'
+import HTMLHelper from './helper/HTMLHelper'
+import EventEmiter from './event/EventEmiter'
+import KeyHandler from './KeyHandler'
+import FileLoader from './helper/FileLoader'
+
 
 interface CSSStyleDeclaration {
   imageRendering: string
 }
 
-namespace emloader {
+//namespace emloader {
   export function load(url: string, container: HTMLElement, emModule?: any): Promise<Emloader> {
     emModule = emModule || {}
     // By default, if no function specified, we try to locate the file at the same level than the url
@@ -26,7 +28,7 @@ namespace emloader {
 
     let loader = new Emloader(container, emModule)
 
-    return helper.HTMLHelper.loadScript(loader.scope.document, url).then((): Emloader => {
+    return HTMLHelper.loadScript(loader.scope.document, url).then((): Emloader => {
       return loader
     })
   }
@@ -40,13 +42,13 @@ namespace emloader {
     return load(url, container, emModule)
   }
 
-  export class Emloader extends event.EventEmiter implements IEmloader {
+  export class Emloader extends EventEmiter implements IEmloader {
 
     static ON_STDERROR: 'onstderror'
     static ON_STDOUT: 'onstdout'
 
     static triggerEvent(emModule: IModule, eventType: string, data: any = {}) {
-      let scope = helper.HTMLHelper.getWindow(emModule.canvas)
+      let scope = HTMLHelper.getWindow(emModule.canvas)
       let e = (<any>scope).document.createEventObject ? (<any>scope).document.createEventObject() : scope.document.createEvent("Events");
       if (e.initEvent) e.initEvent(eventType, true, true);
 
@@ -76,7 +78,7 @@ namespace emloader {
       super()
 
       // Iframe Mame prevent from loading the emscriptem app in the main scope
-      this._iframe = helper.HTMLHelper.createIframe(helper.HTMLHelper.getWindow(this._container).document)
+      this._iframe = HTMLHelper.createIframe(HTMLHelper.getWindow(this._container).document)
       this._container.appendChild(this._iframe)
 
       // default css redering options for canvas
@@ -172,7 +174,7 @@ namespace emloader {
     }
 
     public loadFile(url: string, name: string, path: string, handler?: {(evt: ProgressEvent): void}): Promise<void> {
-      return helper.FileLoader.loadFile(url, name, handler).then((file: IFile): void => this.addFile(file, path))
+      return FileLoader.loadFile(url, name, handler).then((file: IFile): void => this.addFile(file, path))
     }
 
     public loadFiles(files: {[filename: string]: string}, path: string, handler?: {(evt: ProgressEvent): void}): Promise<void> {
@@ -183,4 +185,4 @@ namespace emloader {
       })
     }
   }
-}
+//}

@@ -1,5 +1,5 @@
-namespace emloader.helper {
-  export class HTMLHelper {
+//namespace emloader.helper {
+  export default class HTMLHelper {
 
     // append a script to the DOM
     static loadScript(doc: Document, url): Promise<HTMLScriptElement> {
@@ -48,4 +48,4 @@ namespace emloader.helper {
       }).join(' ')
     }
   }
-}
+//}

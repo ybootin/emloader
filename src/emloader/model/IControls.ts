@@ -1,4 +1,4 @@
-namespace emloader {
+//namespace emloader {
   export interface IControlMapping {
     start: number
     coin: number
@@ -39,4 +39,4 @@ namespace emloader {
     getButtonMap(): Array<string>
     setButtonMap(buttonMap: Array<string>): void
   }
-}
+//}

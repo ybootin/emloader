@@ -1,8 +1,7 @@
-/// <reference path="../model/IControls.ts" />
-/// <reference path="../controllers/Controllers.ts" />
+import Controllers from '../controllers/Controllers'
 
-namespace emloader.plugins {
-  export class ControllerButton {
+//namespace emloader.plugins {
+  export default class ControllerButton {
     private element: HTMLElement
 
     constructor(public controllers: Controllers, public keyCode) {
@@ -29,4 +28,4 @@ namespace emloader.plugins {
       this.element.getElementsByTagName('span')[0].innerHTML = name
     }
   }
-}
+//}

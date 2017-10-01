@@ -1,4 +1,4 @@
-namespace emloader.helper {
+//namespace emloader.helper {
   /**
    * Holds javascript keycode
    *  https://css-tricks.com/snippets/javascript/javascript-keycodes/
@@ -110,4 +110,4 @@ namespace emloader.helper {
   for (var key in KeyCode) {
     KeyCodeKey[KeyCode[key]] = key
   }
-}
+//}

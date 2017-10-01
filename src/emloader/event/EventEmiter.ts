@@ -1,6 +1,6 @@
-namespace emloader.event {
+//namespace emloader.event {
 
-  export class EventEmiter {
+  export default class EventEmiter {
 
     private handlers: {[eventName: string]: Function[]} = {}
 
@@ -25,4 +25,4 @@ namespace emloader.event {
       this.handlers = {}
     }
   }
-}
+//}

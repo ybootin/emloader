@@ -1,5 +1,7 @@
-namespace emloader.helper {
-  export class FileLoader {
+import IFile from '../model/IFile'
+
+//namespace emloader.helper {
+  export default class FileLoader {
     static toUint8Array = (str: string):Uint8Array => {
       var len = str.length;
       var bytes = new Uint8Array( len );
@@ -24,7 +26,8 @@ namespace emloader.helper {
       return new Promise(function (resolve, reject): void {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
-        xhr.responseType = responseType;
+        const rt = 'arraybuffer' // FIXME : https://github.com/Microsoft/TypeScript/issues/15848
+        xhr.responseType = rt;
 
         let errorMsg: string = 'error loading ' + url
 
@@ -49,4 +52,4 @@ namespace emloader.helper {
       });
     }
   }
-}
+//}

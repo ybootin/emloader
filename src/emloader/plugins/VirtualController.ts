@@ -1,9 +1,12 @@
-/// <reference path="../model/IControls.ts" />
-/// <reference path="ControllerButton.ts" />
-/// <reference path="ControllerSelector.ts" />
-/// <reference path="../controllers/Controllers.ts" />
+import Joystick from '../controllers/Joystick'
+import ControllerButton from './ControllerButton'
+import ControllerSelector from './ControllerSelector'
+import {IControlKeyHandler, IControlMapping} from '../model/IControls'
+import Controllers from '../controllers/Controllers'
+import KeyHandler from '../KeyHandler'
+import HTMLHelper from '../helper/HTMLHelper'
 
-namespace emloader.plugins {
+namespace plugins {
   export class VirtualController {
     public joystick: Joystick
     public buttons: Array<ControllerButton> = new Array(222) //{[mameKey: string]: MameButton} = {}
@@ -38,8 +41,8 @@ namespace emloader.plugins {
       this.updateButtons()
 
       // Handle keychange visually
-      this.controllers.on(emloader.Controllers.KEYPRESS, (keyCode: number) => this.onKeyEvent(emloader.Controllers.KEYPRESS, keyCode))
-      this.controllers.on(emloader.Controllers.KEYRELEASE, (keyCode: number) => this.onKeyEvent(emloader.Controllers.KEYRELEASE, keyCode))
+      this.controllers.on(Controllers.KEYPRESS, (keyCode: number) => this.onKeyEvent(Controllers.KEYPRESS, keyCode))
+      this.controllers.on(Controllers.KEYRELEASE, (keyCode: number) => this.onKeyEvent(Controllers.KEYRELEASE, keyCode))
     }
 
     public getElement(): HTMLElement {
@@ -66,7 +69,7 @@ namespace emloader.plugins {
     }
 
     public updateButton(button: ControllerButton, buttonId: string): void {
-      let keyName = emloader.KeyHandler.getKey(this.mapping[buttonId])
+      let keyName = KeyHandler.getKey(this.mapping[buttonId])
       let buttonClass = this.baseClass + '-button'
       let classes = [buttonClass, buttonClass + '-' + keyName, buttonClass + '-' + buttonId]
 
@@ -90,7 +93,7 @@ namespace emloader.plugins {
     private onKeyEvent(eventName: string, keyCode: number) {
       if (this.buttons[keyCode]) {
         // Lazy button.addClass/removeClass(className)
-        helper.HTMLHelper[(eventName === emloader.Controllers.KEYPRESS ? 'add' : 'remove') + 'Class'](this.buttons[keyCode].getElement(), this.baseClass + '-button-pressed')
+        HTMLHelper[(eventName === Controllers.KEYPRESS ? 'add' : 'remove') + 'Class'](this.buttons[keyCode].getElement(), this.baseClass + '-button-pressed')
       }
     }
   }

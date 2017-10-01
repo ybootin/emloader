@@ -1,6 +1,7 @@
+import {IControlKeyHandler} from '../model/IControls'
 
-namespace emloader {
-  export class Keyboard {
+//namespace emloader {
+  export default class Keyboard {
     static KEYMAPPINGCHANGE: string = 'keymappingchange'
 
     public keyhandler: IControlKeyHandler
@@ -36,4 +37,4 @@ namespace emloader {
       }
     }
   }
-}
+//}
