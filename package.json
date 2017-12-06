@@ -17,7 +17,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "npm run buildts && npm run buildcss",
-    "buildts": "node_modules/typescript/bin/tsc -d  --target es6 --sourceMap --outFile dist/emloader.js src/main.ts",
+    "buildts": "node_modules/typescript/bin/tsc -d  --target es6 --sourceMap --module amd --outFile dist/emloader.js src/main.ts",
     "buildcss": "cp src/emloader/plugins/plugins.css dist/emloader-plugins.css"
   }
 }
