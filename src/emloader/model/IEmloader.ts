@@ -1,5 +1,5 @@
 /// <reference path="IModule.ts" />
-/// <reference path="FS.d.ts" />
+/// <reference path="FS.ts" />
 /// <reference path="../KeyHandler.ts" />
 
 namespace emloader {

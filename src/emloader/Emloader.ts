@@ -1,4 +1,4 @@
-/// <reference path="model/FS.d.ts" />
+/// <reference path="model/FS.ts" />
 /// <reference path="model/Window.ts" />
 /// <reference path="model/IFile.ts" />
 /// <reference path="model/IModule.ts" />
