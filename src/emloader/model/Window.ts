@@ -3,7 +3,7 @@
 interface Window {
   Module: emloader.IModule
   mozRequestAnimationFrame: any
-  webkitRequestAnimationFrame: any
+  webkitRequestAnimationFrame: number
   mozCancelRequestAnimationFrame: any
   webkitCancelRequestAnimationFrame: any
   cancelRequestAnimationFrame: any

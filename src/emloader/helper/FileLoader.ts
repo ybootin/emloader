@@ -20,7 +20,7 @@ namespace emloader.helper {
     }
 
     // XHR file loader
-    static fetchFile(url: string, responseType: string = 'arraybuffer', handler?: {(evt: ProgressEvent): void}): Promise<ArrayBuffer> {
+    static fetchFile(url: string, responseType: XMLHttpRequestResponseType, handler?: {(evt: ProgressEvent): void}): Promise<ArrayBuffer> {
       return new Promise(function (resolve, reject): void {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);

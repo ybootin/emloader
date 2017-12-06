@@ -42,8 +42,8 @@ namespace emloader {
 
   export class Emloader extends event.EventEmiter implements IEmloader {
 
-    static ON_STDERROR: 'onstderror'
-    static ON_STDOUT: 'onstdout'
+    static ON_STDERROR: string = 'onstderror'
+    static ON_STDOUT: string = 'onstdout'
 
     static triggerEvent(emModule: IModule, eventType: string, data: any = {}) {
       let scope = helper.HTMLHelper.getWindow(emModule.canvas)
