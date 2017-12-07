@@ -102,21 +102,21 @@ namespace emloader {
 
       this._scope.Module.arguments = defaultModule.arguments || []
       this._scope.Module.screenIsReadOnly = defaultModule.screenIsReadOnly || false
-      this._scope.Module.print = (text: string): void => {
-        this._stdout.push(text)
+      this._scope.Module.print = (stdout: string): void => {
+        this._stdout.push(stdout)
         if (typeof defaultModule.print === 'function') {
-          defaultModule.print(text)
+          defaultModule.print(stdout)
         }
 
-        this.emit(Emloader.ON_STDOUT)
+        this.emit(Emloader.ON_STDOUT, stdout)
       }
-      this._scope.Module.printErr = (err: string): void => {
-        this._stderr.push(err)
+      this._scope.Module.printErr = (stderr: string): void => {
+        this._stderr.push(stderr)
         if (typeof defaultModule.printErr === 'function') {
-          defaultModule.printErr(err)
+          defaultModule.printErr(stderr)
         }
 
-        this.emit(Emloader.ON_STDERROR)
+        this.emit(Emloader.ON_STDERROR, stderr)
       }
       this._scope.Module.canvas = this.canvas
       this._scope.Module.noInitialRun = defaultModule.noInitialRun || true
