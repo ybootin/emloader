@@ -1,7 +1,7 @@
 {
   "name": "emloader",
   "description": "Provide a simple js loader for emscripten mame js compiled emulator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/emloader.js",
   "files": [
     "dist/",
